@@ -1,5 +1,5 @@
 package com.revature.frittte.customer;
-
+import com.revature.frittte.customer.CustomerDao;
 import com.revature.frittte.exception.AuthenticationException;
 import com.revature.frittte.exception.InvalidRequestException;
 import com.revature.frittte.exception.ResourcePersistanceException;
