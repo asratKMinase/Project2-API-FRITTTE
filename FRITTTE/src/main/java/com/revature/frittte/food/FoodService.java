@@ -1,8 +1,12 @@
 package com.revature.frittte.food;
 
+import com.revature.frittte.customer.Customer;
+import com.revature.frittte.exception.InvalidRequestException;
+import com.revature.frittte.exception.ResourcePersistanceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.Column;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -48,9 +52,6 @@ public class FoodService {
         }
 
         // TODO: Will implement with JDBC (connecting to our database)
-        if(validateEmailNotUsed(newFoodItem.getId())){
-            throw new InvalidRequestException("newFoodItem is already in use. Please try again with another newFoodItem or login into previous made account.");
-        }
 
         Food persistedFood = foodDao.save(newFoodItem);
 
@@ -59,4 +60,19 @@ public class FoodService {
         }
         return persistedFood;
     }
+
+
+
+    public boolean validateInput(Food newFoodItem) {
+        if(newFoodItem == null) return false;
+        if(newFoodItem.getId()<0) return false;
+        if(newFoodItem.getItem_name()== null || newFoodItem.getItem_name().trim().equals("")) return false;
+        if(newFoodItem.getCost()<0) return false;
+        if(newFoodItem.getWeight()<0) return false;
+        if((newFoodItem.isLiquid() != true)|| (newFoodItem.isLiquid() != false )) return false;
+        return((newFoodItem.isFrozen() != true)|| (newFoodItem.isFrozen() != false )) ;
+        }
+
+
+
 }

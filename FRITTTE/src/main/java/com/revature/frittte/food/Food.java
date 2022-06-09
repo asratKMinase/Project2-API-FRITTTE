@@ -1,5 +1,6 @@
 package com.revature.frittte.food;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -8,12 +9,14 @@ import javax.persistence.Table;
 @Table
 public class Food {
     @Id
-
     private int id;
+    @Column(name = "item_name", length = 50, nullable = false)
     private String item_name;
     private int cost;
     private int weight;
+
     private boolean liquid;
+
     private boolean frozen;
 
     public int getId() {
