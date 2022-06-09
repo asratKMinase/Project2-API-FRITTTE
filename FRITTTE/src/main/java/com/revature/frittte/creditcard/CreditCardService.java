@@ -19,6 +19,11 @@ public class CreditCardService {
         this.creditCardDao = creditCardDao;
     }
 
+    public CreditCard findById(int id)
+    {
+         CreditCard creditCard = creditCardDao.findById(id).get();
+         return creditCard;
+    }
     public boolean delete(String creditCardNumber){
         creditCardDao.deleteById(Integer.valueOf(creditCardNumber));
         return true;
