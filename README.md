@@ -3,7 +3,7 @@
 # Desctiption
 FRITTTE is a website where users can shop for groceries and communicate with other users through a public, group, or private chat. Users can also leverage this system to get customer support. Users can create an account and log in to create orders for their weekly shop or just chat with other customers to see if there are any deals on. User's data will be persisted when an order is placed, when a user signs up or logs in, and when they add a credit card. Users can chat about deals that they have found while scouring the site or talk about what items are the best bang for the buck. Creating a user, logging in, creating an order and view all of our items will be built on JavaScript React Framework. Will all be deployed and tested via Azure Pipelines CI/CD.
 
-
+ here is the push testing
 # User Stories
 
 ## As Admin
