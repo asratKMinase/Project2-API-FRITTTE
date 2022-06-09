@@ -10,7 +10,7 @@ import javax.persistence.Table;
 public class Food {
     @Id
     private int id;
-    @Column(name = "item_name", length = 25, nullable = false)
+    @Column(name = "item_name", length = 50, nullable = false)
     private String item_name;
     private int cost;
     private int weight;
