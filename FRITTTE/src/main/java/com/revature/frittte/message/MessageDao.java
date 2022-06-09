@@ -1,7 +1,6 @@
 package com.revature.frittte.message;
 
-import com.revature.frittte.customer.Customer;
-import com.revature.frittte.food.Food;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
