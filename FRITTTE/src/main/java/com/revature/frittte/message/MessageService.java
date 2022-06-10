@@ -1,17 +1,10 @@
 package com.revature.frittte.message;
 
-
-import com.revature.frittte.chat.Chat;
-import com.revature.frittte.customer.Customer;
 import com.revature.frittte.exception.AuthenticationException;
 import com.revature.frittte.exception.InvalidRequestException;
 import com.revature.frittte.exception.ResourcePersistanceException;
-import com.revature.frittte.food.Food;
-import com.revature.frittte.food.FoodDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.persistence.Column;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -34,13 +27,10 @@ public class MessageService {
         messageDao.deleteById(id);
         return true;
 
-
-
     }
     public Message readById(int id){
         Message message = messageDao.findById(id).get();
         return message;
-
     }
 
     public Message update(Message updatedMessage) {
@@ -58,7 +48,7 @@ public class MessageService {
     public Message create(Message newMessage){
         if(!validateInput(newMessage)){ // checking if false
             // TODO: throw - what's this keyword?
-            throw new InvalidRequestException("New FoodItem was not validated, either empty String or null values");
+            throw new InvalidRequestException("New Message was not validated, either empty String or null values");
         }
 
         // TODO: Will implement with JDBC (connecting to our database)
@@ -66,12 +56,10 @@ public class MessageService {
         Message persistedMessage = messageDao.save(newMessage);
 
         if(persistedMessage == null){
-            throw new ResourcePersistanceException("newFoodItem was not persisted to the database upon registration");
+            throw new ResourcePersistanceException("newMessage was not persisted to the database upon registration");
         }
         return persistedMessage;
     }
-
-
 
     public boolean validateInput(Message newMessage) {
         if(newMessage == null) return false;

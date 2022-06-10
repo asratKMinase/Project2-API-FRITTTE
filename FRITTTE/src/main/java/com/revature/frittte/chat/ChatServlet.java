@@ -35,8 +35,8 @@ public class ChatServlet {
         return new ResponseEntity<>(newChat, HttpStatus.OK);
     }
     @DeleteMapping("/deleteChat")
-    public void deleteChat(@RequestBody String username) {
-        boolean newChat = chatServices.delete(username);
+    public void deleteChat(@RequestBody String chat_username) {
+        boolean newChat = chatServices.delete(chat_username);
     }
 
     @PostMapping("/addChat")
