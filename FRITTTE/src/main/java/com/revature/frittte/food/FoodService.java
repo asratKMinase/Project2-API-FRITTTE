@@ -1,11 +1,21 @@
 package com.revature.frittte.food;
 
+<<<<<<< HEAD
+=======
+
+import com.revature.frittte.chat.Chat;
+import com.revature.frittte.customer.Customer;
+>>>>>>> 5c923f4893f704edbeafcd4822d2048c1e7396a8
 import com.revature.frittte.exception.AuthenticationException;
 import com.revature.frittte.exception.InvalidRequestException;
 import com.revature.frittte.exception.ResourcePersistanceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5c923f4893f704edbeafcd4822d2048c1e7396a8
 import javax.transaction.Transactional;
 import java.util.List;
 
