@@ -1,83 +1,27 @@
 package com.revature.frittte.chat;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.revature.frittte.customer.Customer;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "customer")
+@Table(name = "chat")
 public class Chat {
-
-
         @Id
         private String id;
-        @Column(name = "username", length = 25, nullable = false)
-        private String username;
+        @ManyToOne(optional = false)
+        @JoinColumn(name = "Customer", referencedColumnName = "username")
+        //@Column(name = "chat_username", length = 25, nullable = false)
+        private Customer chat_username;
         @Column(name = "title", length = 25, nullable = false)
         private String title;
+        @Column(name = "date_t")
         private String date;
         private String people;
-
-    public Chat(String id, String username, String title, String date, String people) {
-        this.id = id;
-        this.username = username;
-        this.title = title;
-        this.date = date;
-        this.people = people;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getPeople() {
-        return people;
-    }
-
-    public void setPeople(String people) {
-        this.people = people;
-    }
-
-    @Override
-    public String toString() {
-        return "Chat{" +
-                "id='" + id + '\'' +
-                ", username='" + username + '\'' +
-                ", title='" + title + '\'' +
-                ", date='" + date + '\'' +
-                ", people='" + people + '\'' +
-                '}';
-    }
 }

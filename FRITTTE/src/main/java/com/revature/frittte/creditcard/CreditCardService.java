@@ -53,6 +53,6 @@ public class CreditCardService {
         if(newCreditCard.getCvv() <= 0) return false;
         if(newCreditCard.getExpDate() == null || newCreditCard.getExpDate().trim().equals("")) return false;
         if(newCreditCard.getLimit() < 0) return false;
-        return (newCreditCard.getCustomerUsername() != null || !newCreditCard.getCustomerUsername().trim().equals("")) ;
+        return (newCreditCard.getCustomerUsername() != null || !newCreditCard.getCustomerUsername().equals("")) ;
     }
 }
