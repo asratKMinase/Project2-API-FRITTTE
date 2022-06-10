@@ -2,6 +2,7 @@ package com.revature.frittte.message;
 
 
 import com.revature.frittte.chat.Chat;
+import com.revature.frittte.customer.Customer;
 import com.revature.frittte.exception.AuthenticationException;
 import com.revature.frittte.exception.InvalidRequestException;
 import com.revature.frittte.exception.ResourcePersistanceException;
@@ -42,6 +43,11 @@ public class MessageService {
 
     }
 
+    public Message update(Message updatedMessage) {
+        messageDao.save(updatedMessage);
+        return updatedMessage;
+    }
+
 
 
 
@@ -70,11 +76,7 @@ public class MessageService {
     public boolean validateInput(Message newMessage) {
         if(newMessage == null) return false;
         if(newMessage.getId()>0) return false;
-<<<<<<< HEAD
         if(newMessage.getSender()== null || newMessage.getSender().equals("")) return false;
-=======
-        if(newMessage.getSender()== null || newMessage.getSender().trim().equals("")) return false;
->>>>>>> 5c923f4893f704edbeafcd4822d2048c1e7396a8
         if(newMessage.getText()== null || newMessage.getText().trim().equals("")) return false;
         return(newMessage.getCreated_date()== null || newMessage.getCreated_date().trim().equals("")) ;
 
