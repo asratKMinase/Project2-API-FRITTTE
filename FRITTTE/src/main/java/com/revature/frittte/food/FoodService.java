@@ -1,15 +1,21 @@
 package com.revature.frittte.food;
 
+<<<<<<< HEAD
+=======
 
 import com.revature.frittte.chat.Chat;
 import com.revature.frittte.customer.Customer;
+>>>>>>> 5c923f4893f704edbeafcd4822d2048c1e7396a8
 import com.revature.frittte.exception.AuthenticationException;
 import com.revature.frittte.exception.InvalidRequestException;
 import com.revature.frittte.exception.ResourcePersistanceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 5c923f4893f704edbeafcd4822d2048c1e7396a8
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -17,17 +23,14 @@ import java.util.List;
 @Transactional
 public class FoodService {
     private FoodDao foodDao;
-
     @Autowired
     public FoodService(FoodDao foodDao){
         this.foodDao = foodDao;
     }
-
     public List<Food> findAll(){
         List<Food> foods = (List <Food>) foodDao.findAll();
         return foods;
     }
-
     public  boolean deleteById(int id){
       foodDao.deleteById(id);
       return true;
@@ -72,7 +75,7 @@ public class FoodService {
         if(newFoodItem.getItem_name()== null || newFoodItem.getItem_name().trim().equals("")) return false;
         if(newFoodItem.getCost()<0) return false;
         if(newFoodItem.getWeight()<0) return false;
-        if((newFoodItem.isLiquid() != true)|| (newFoodItem.isLiquid() != false )) return false;
+        if((newFoodItem.isVolume() != true)|| (newFoodItem.isVolume() != false )) return false;
         return((newFoodItem.isFrozen() != true)|| (newFoodItem.isFrozen() != false )) ;
         }
 

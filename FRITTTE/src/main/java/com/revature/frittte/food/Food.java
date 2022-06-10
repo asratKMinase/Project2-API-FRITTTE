@@ -6,16 +6,17 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table (name = "food")
 public class Food {
     @Id
     private int id;
     @Column(name = "item_name", length = 50, nullable = false)
     private String item_name;
+    @Column(name = "cost_t")
     private int cost;
     private int weight;
 
-    private boolean liquid;
+    private boolean volume;
 
     private boolean frozen;
 
@@ -24,13 +25,16 @@ public class Food {
 
     }
 
-    public Food(int id, String item_name, int cost, int weight, boolean liquid, boolean frozen) {
+    public Food(int id, String item_name, int cost, int weight, boolean volume, boolean frozen) {
         this.id = id;
         this.item_name = item_name;
         this.cost = cost;
         this.weight = weight;
-        this.liquid = liquid;
+        this.volume = volume;
         this.frozen = frozen;
+    }
+
+    public Food() {
     }
 
     public void setId(int id) {
@@ -61,12 +65,12 @@ public class Food {
         this.weight = weight;
     }
 
-    public boolean isLiquid() {
-        return liquid;
+    public boolean isVolume() {
+        return volume;
     }
 
-    public void setLiquid(boolean liquid) {
-        this.liquid = liquid;
+    public void setVolume(boolean volume) {
+        this.volume = volume;
     }
 
     public boolean isFrozen() {
@@ -84,7 +88,7 @@ public class Food {
                 ", item_name='" + item_name + '\'' +
                 ", cost=" + cost +
                 ", weight=" + weight +
-                ", liquid=" + liquid +
+                ", liquid=" + volume +
                 ", frozen=" + frozen +
                 '}';
     }
