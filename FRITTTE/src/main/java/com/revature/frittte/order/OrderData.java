@@ -6,7 +6,7 @@ import com.revature.frittte.food.Food;
 import javax.persistence.*;
 
 @Entity
-@Table
+@Table (name = "order_o")
 public class OrderData {
 
     @Id
@@ -22,7 +22,7 @@ public class OrderData {
     @ManyToOne(optional = false)
     @JoinColumn(name = "customer", referencedColumnName = "username")
     private Customer customer_username;
-
+    @Column(name = "comment_t")
     private String comment;
 
     public OrderData(int id, String orderDate, Food item_name, Customer customer_username, String comment) {
@@ -31,6 +31,10 @@ public class OrderData {
         this.item_name = item_name;
         this.customer_username = customer_username;
         this.comment = comment;
+    }
+
+    public OrderData() {
+
     }
 
     public int getId() {

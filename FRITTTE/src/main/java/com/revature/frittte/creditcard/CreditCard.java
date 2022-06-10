@@ -1,34 +1,39 @@
 package com.revature.frittte.creditcard;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.revature.frittte.customer.Customer;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "credit_card")
 public class CreditCard {
     @Id
-    @Column(name = "credit_card_number", nullable = false)
+    @Column(name = "cc_number", nullable = false)
     private int creditCardNumber;
-    @Column(name = "credit_card_name" ,nullable = false)
+    @Column(name = "cc_name" ,nullable = false)
     private String creditCardName;
     private int cvv;
     @Column(name = "exp_date" ,nullable = false)
     private String expDate;
     @Column(name = "limit_l" ,nullable = false)
     private int limit;
-    @Column(name = "customer_username" ,nullable = false)
-    private String customerUsername;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Customer", referencedColumnName = "username")
+    //@Column(name = "customer_username" ,nullable = false)
+    private Customer customerUsername;
 
-    public CreditCard(int creditCardNumber, String creditCardName, int cvv, String expDate, int limit, String customerUsername) {
+    public CreditCard(int creditCardNumber, String creditCardName, int cvv, String expDate, int limit, Customer customerUsername) {
         this.creditCardNumber = creditCardNumber;
         this.creditCardName = creditCardName;
         this.cvv = cvv;
         this.expDate = expDate;
         this.limit = limit;
         this.customerUsername = customerUsername;
+    }
+
+    public CreditCard() {
+
     }
 
     public int getCreditCardNumber() {
@@ -71,11 +76,11 @@ public class CreditCard {
         this.limit = limit;
     }
 
-    public String getCustomerUsername() {
+    public Customer getCustomerUsername() {
         return customerUsername;
     }
 
-    public void setCustomerUsername(String customerUsername) {
+    public void setCustomerUsername(Customer customerUsername) {
         this.customerUsername = customerUsername;
     }
 

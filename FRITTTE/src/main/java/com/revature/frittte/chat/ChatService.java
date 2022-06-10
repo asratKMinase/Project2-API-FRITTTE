@@ -1,6 +1,5 @@
 package com.revature.frittte.chat;
 
-
 import com.revature.frittte.exception.AuthenticationException;
 import com.revature.frittte.exception.InvalidRequestException;
 import com.revature.frittte.exception.ResourcePersistanceException;
@@ -9,8 +8,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-
-
 
 @Service
 @Transactional
@@ -48,9 +45,9 @@ public class ChatService {
         if(!validateInput(newChat)){
             throw new InvalidRequestException("User input was not validated, either empty String or null values");
         }
-        if(validateUsernameNotUsed(newChat.getUsername())){
-            throw new InvalidRequestException("Username is already in use. Please try again with another email or login into previous made account.");
-        }
+//        if(validateUsernameNotUsed(newChat.getUsername())){
+//            throw new InvalidRequestException("Username is already in use. Please try again with another email or login into previous made account.");
+//        }
         Chat persistedChat = chatDao.save(newChat);
 //TODO need to be checked in every services for persistedTrainer typo
         if(persistedChat == null){
@@ -63,7 +60,7 @@ public class ChatService {
     public boolean validateInput(Chat newChat) {
         if(newChat == null) return false;
         if(newChat.getId()== null || newChat.getId().trim().equals("")) return false;
-        if(newChat.getUsername() == null || newChat.getUsername().trim().equals("")) return false;
+        if(newChat.getUsername() == null || newChat.getUsername().equals("")) return false;
         if(newChat.getTitle() == null || newChat.getTitle().trim().equals("")) return false;
         if(newChat.getDate() == null || newChat.getDate().trim().equals("")) return false;
         return newChat.getPeople() != null || !newChat.getPeople().trim().equals("");
