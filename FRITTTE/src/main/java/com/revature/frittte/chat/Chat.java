@@ -1,6 +1,5 @@
 package com.revature.frittte.chat;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.revature.frittte.customer.Customer;
 
 import javax.persistence.*;
@@ -14,16 +13,16 @@ public class Chat {
         @ManyToOne(optional = false)
         @JoinColumn(name = "Customer", referencedColumnName = "username")
         //@Column(name = "chat_username", length = 25, nullable = false)
-        private Customer username;
+        private Customer chat_username;
         @Column(name = "title", length = 25, nullable = false)
         private String title;
         @Column(name = "date_t")
         private String date;
         private String people;
 
-    public Chat(String id, Customer username, String title, String date, String people) {
+    public Chat(String id, Customer chat_username, String title, String date, String people) {
         this.id = id;
-        this.username = username;
+        this.chat_username = chat_username;
         this.title = title;
         this.date = date;
         this.people = people;
@@ -40,12 +39,12 @@ public class Chat {
         this.id = id;
     }
 
-    public Customer getUsername() {
-        return username;
+    public Customer getChat_username() {
+        return chat_username;
     }
 
-    public void setUsername(Customer username) {
-        this.username = username;
+    public void setChat_username(Customer chat_username) {
+        this.chat_username = chat_username;
     }
 
     public String getTitle() {
@@ -76,7 +75,7 @@ public class Chat {
     public String toString() {
         return "Chat{" +
                 "id='" + id + '\'' +
-                ", username='" + username + '\'' +
+                ", username='" + chat_username + '\'' +
                 ", title='" + title + '\'' +
                 ", date='" + date + '\'' +
                 ", people='" + people + '\'' +

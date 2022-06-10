@@ -60,7 +60,7 @@ public class ChatService {
     public boolean validateInput(Chat newChat) {
         if(newChat == null) return false;
         if(newChat.getId()== null || newChat.getId().trim().equals("")) return false;
-        if(newChat.getUsername() == null || newChat.getUsername().equals("")) return false;
+        if(newChat.getChat_username() == null || newChat.getChat_username().equals("")) return false;
         if(newChat.getTitle() == null || newChat.getTitle().trim().equals("")) return false;
         if(newChat.getDate() == null || newChat.getDate().trim().equals("")) return false;
         return newChat.getPeople() != null || !newChat.getPeople().trim().equals("");
