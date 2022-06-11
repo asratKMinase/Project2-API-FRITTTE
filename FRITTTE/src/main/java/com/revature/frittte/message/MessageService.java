@@ -40,12 +40,14 @@ public class MessageService {
     }
     public Message create(Message newMessage){
         if(!validateInput(newMessage)){ // checking if false
-            throw new InvalidRequestException("New FoodItem was not validated, either empty String or null values");
+            throw new InvalidRequestException("New Message was not validated, either empty String or null values");
         }
         Message persistedMessage = messageDao.save(newMessage);
 
         if(persistedMessage == null){
-            throw new ResourcePersistanceException("newMessage was not persisted to the database upon registration");
+
+            throw new ResourcePersistanceException("Message was not persisted to the database upon registration");
+
         }
         return persistedMessage;
     }
