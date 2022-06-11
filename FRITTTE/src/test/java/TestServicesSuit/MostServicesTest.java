@@ -1,6 +1,9 @@
 package TestServicesSuit;
 
 
+import com.revature.frittte.chat.Chat;
+import com.revature.frittte.chat.ChatDao;
+import com.revature.frittte.chat.ChatService;
 import com.revature.frittte.creditcard.CreditCard;
 import com.revature.frittte.creditcard.CreditCardDao;
 import com.revature.frittte.creditcard.CreditCardService;
@@ -12,6 +15,12 @@ import com.revature.frittte.exception.InvalidRequestException;
 import com.revature.frittte.food.Food;
 import com.revature.frittte.food.FoodDao;
 import com.revature.frittte.food.FoodService;
+import com.revature.frittte.message.Message;
+import com.revature.frittte.message.MessageDao;
+import com.revature.frittte.message.MessageService;
+import com.revature.frittte.order.OrderDao;
+import com.revature.frittte.order.OrderData;
+import com.revature.frittte.order.OrderServices;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,25 +30,44 @@ import static org.mockito.Mockito.*;
 public class MostServicesTest {
 
     Customer stu;
+    Food stu2;
+    Chat stu3;
     CreditCardService sut;
     CustomerService sut2;
 
     FoodService sut3;
 
+    OrderServices sut4;
+    MessageService sut5;
+
+    ChatService sut6;
+
     FoodDao mockFoodDao;
 
     CreditCardDao mockCreditCardDao;
     CustomerDao mockCustomerDao;
+    OrderDao mockOrderDao;
+
+    MessageDao mockMessageDao;
+    ChatDao mockChatDao;
 
     @BeforeEach
     public void testPrep(){
         mockCreditCardDao = mock(CreditCardDao.class);
         mockCustomerDao = mock(CustomerDao.class);
         mockFoodDao = mock(FoodDao.class);
+        mockOrderDao = mock(OrderDao.class);
+        mockMessageDao = mock(MessageDao.class);
+        mockChatDao =mock(ChatDao.class);
         stu = new Customer("Geoff", "1234", "Geoffy", "Blois", "10-9-1900", false,false);
+        stu2 = new Food(1,"water", 12, 10, 12, false);
+        stu3 = new Chat("1","Private Chat", "Mission Secrets","6-11-2022", stu);
         sut = new CreditCardService(mockCreditCardDao);
         sut2 = new CustomerService(mockCustomerDao);
         sut3 = new FoodService(mockFoodDao);
+        sut4 = new OrderServices(mockOrderDao);
+        sut5 = new MessageService(mockMessageDao);
+        sut6 = new ChatService(mockChatDao);
 
     }
 
@@ -126,11 +154,65 @@ public class MostServicesTest {
 
     @Test
     public void test_create_givenRepeatedFoodInformation_throwsInvalidRequestException(){
-        Food food = new Food(1,"", 12, 10, 12, false);
-        when(mockFoodDao.existsById(food.getId())).thenReturn(true);
+        Food food = new Food(1,"water", -1, 10, 12, false);
+        when(mockFoodDao.existsById(food.getItemName())).thenReturn(true);
 
         Assertions.assertThrows(InvalidRequestException.class, () -> { sut3.create(food);});
         verify(mockFoodDao, times(0)).save(food);
     }
 
+    //order
+    @Test
+    public void test_validInput_givenOrder_returnTrue(){
+
+        OrderData orderData = new OrderData(1,"10-12-1956", stu2, stu, "This water is expensive" );
+
+        boolean actualResult = sut4.validateInput(orderData);
+
+        Assertions.assertTrue(actualResult);
+    }
+
+    // Message
+
+    @Test
+    public void test_validInput_givenMessage_returnFalse(){
+
+        Message message = new Message(1, stu3 ,"", "6-11-2022");
+
+
+        boolean actualResult = sut5.validateInput(message);
+
+        Assertions.assertFalse(actualResult);
+    }
+
+    @Test
+    public void test_create_givenRepeatedMessageInformation_throwsInvalidRequestException(){
+        Message message = new Message(1, stu3 ,"Hello this is a message", "");
+        when(mockMessageDao.existsById(message.getId())).thenReturn(true);
+
+        Assertions.assertThrows(InvalidRequestException.class, () -> { sut5.create(message);});
+        verify(mockMessageDao, times(0)).save(message);
+    }
+
+
+    // Chat
+    @Test
+    public void test_validInput_givenChat_returnFalse(){
+
+        Chat chat = new Chat("1","Private Chat", "","6-11-2022", stu);
+
+
+        boolean actualResult = sut6.validateInput(chat);
+
+        Assertions.assertFalse(actualResult);
+    }
+
+    @Test
+    public void test_create_givenRepeatedChatInformation_throwsInvalidRequestException(){
+        Chat chat = new Chat("1","Private Chat", "Mission Secrets","", stu);
+        when(mockChatDao.existsById(chat.getId())).thenReturn(true);
+
+        Assertions.assertThrows(InvalidRequestException.class, () -> { sut6.create(chat);});
+        verify(mockChatDao, times(0)).save(chat);
+    }
 }
