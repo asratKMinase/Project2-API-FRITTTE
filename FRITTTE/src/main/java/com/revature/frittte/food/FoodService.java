@@ -21,14 +21,15 @@ public class FoodService {
         List<Food> foods = (List <Food>) foodDao.findAll();
         return foods;
     }
-    public  boolean deleteById(int id){
+    public  boolean deleteById(String id){
       foodDao.deleteById(id);
       return true;
 
 
 
     }
-    public Food readById(int id){
+    public Food readById(String id)
+    {
         Food food = foodDao.findById(id).get();
         return food;
 
@@ -37,7 +38,7 @@ public class FoodService {
 
 
 
-    public boolean validateUsernameNotUsed(int id){
+    public boolean validateUsernameNotUsed(String id){
         return foodDao.existsById(id);
     }
 
@@ -65,7 +66,9 @@ public class FoodService {
         if(newFoodItem.getItemName()== null || newFoodItem.getItemName().trim().equals("")) return false;
         if(newFoodItem.getCost()<0) return false;
         if(newFoodItem.getWeight()<0) return false;
+
         if((newFoodItem.getVolume() < 0)) return false;
+
         return((newFoodItem.isFrozen() != true)|| (newFoodItem.isFrozen() != false )) ;
         }
 
