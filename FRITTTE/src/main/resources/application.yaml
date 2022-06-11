@@ -11,7 +11,7 @@ spring:
     name: aroma-project
 
   datasource:
-    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    driver-class-name: org.postgresql.Driver
     url: jdbc:sqlserver://;serverName=akm-revprojectbd.database.windows.net;databaseName=AmAyDB;encrypt=true
     username: amrevpro
     password: Bokrrevature22
