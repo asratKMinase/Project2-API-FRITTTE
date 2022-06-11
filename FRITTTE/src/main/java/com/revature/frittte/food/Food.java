@@ -16,8 +16,7 @@ import javax.persistence.Table;
 @Table (name = "food")
 public class Food {
 
-    private int id;
-
+    private String id;
     @Id
     @Column(name = "item_name", length = 50, nullable = false)
     private String itemName;
