@@ -1,21 +1,11 @@
 package com.revature.frittte.food;
 
-<<<<<<< HEAD
-=======
-
-import com.revature.frittte.chat.Chat;
-import com.revature.frittte.customer.Customer;
->>>>>>> 5c923f4893f704edbeafcd4822d2048c1e7396a8
 import com.revature.frittte.exception.AuthenticationException;
 import com.revature.frittte.exception.InvalidRequestException;
 import com.revature.frittte.exception.ResourcePersistanceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 5c923f4893f704edbeafcd4822d2048c1e7396a8
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -72,7 +62,7 @@ public class FoodService {
     public boolean validateInput(Food newFoodItem) {
         if(newFoodItem == null) return false;
         if(newFoodItem.getId()<0) return false;
-        if(newFoodItem.getItem_name()== null || newFoodItem.getItem_name().trim().equals("")) return false;
+        if(newFoodItem.getItemName()== null || newFoodItem.getItemName().trim().equals("")) return false;
         if(newFoodItem.getCost()<0) return false;
         if(newFoodItem.getWeight()<0) return false;
         if((newFoodItem.isVolume() != true)|| (newFoodItem.isVolume() != false )) return false;

@@ -28,35 +28,22 @@ public class MessageService {
         List<Message> messages = (List <Message>) messageDao.findAll();
         return messages;
     }
-
     public  boolean deleteById(int id){
         messageDao.deleteById(id);
         return true;
-
-
-
     }
     public Message readById(int id){
         Message message = messageDao.findById(id).get();
         return message;
 
     }
-
-
-
-
     public boolean validateIdNotUsed(int id){
         return messageDao.existsById(id);
     }
-
     public Message create(Message newMessage){
         if(!validateInput(newMessage)){ // checking if false
-            // TODO: throw - what's this keyword?
             throw new InvalidRequestException("New FoodItem was not validated, either empty String or null values");
         }
-
-        // TODO: Will implement with JDBC (connecting to our database)
-
         Message persistedMessage = messageDao.save(newMessage);
 
         if(persistedMessage == null){
@@ -64,17 +51,10 @@ public class MessageService {
         }
         return persistedMessage;
     }
-
-
-
     public boolean validateInput(Message newMessage) {
         if(newMessage == null) return false;
         if(newMessage.getId()>0) return false;
-<<<<<<< HEAD
         if(newMessage.getSender()== null || newMessage.getSender().equals("")) return false;
-=======
-        if(newMessage.getSender()== null || newMessage.getSender().trim().equals("")) return false;
->>>>>>> 5c923f4893f704edbeafcd4822d2048c1e7396a8
         if(newMessage.getText()== null || newMessage.getText().trim().equals("")) return false;
         return(newMessage.getCreated_date()== null || newMessage.getCreated_date().trim().equals("")) ;
 
@@ -92,8 +72,5 @@ public class MessageService {
         }
 
         return authenticatedChat;
-
     }
-
-
 }
