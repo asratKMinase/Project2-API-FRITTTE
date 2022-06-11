@@ -24,7 +24,7 @@ public class FoodServlet {
     }
 
     @GetMapping("/findFoodItem")
-    public ResponseEntity<Food> findFoodItem(@RequestBody int findFood){
+    public ResponseEntity<Food> findFoodItem(@RequestBody String findFood){
         Food food = foodService.readById(findFood);
         return new ResponseEntity<>(food, HttpStatus.OK);
     }
@@ -35,7 +35,7 @@ public class FoodServlet {
     }
 
     @DeleteMapping("/delete")
-    public void deleteCustomer(@RequestBody int id) {
+    public void deleteCustomer(@RequestBody String id) {
         boolean deleteFood = foodService.deleteById(id);
     }
 
