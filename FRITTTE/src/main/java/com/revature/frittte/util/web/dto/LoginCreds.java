@@ -7,12 +7,13 @@ public class LoginCreds {
 
         // JACKSON REQUIRES A NO ARG CONSTRUCTOR
 
-    public String getEmail() {
+
+    public String getUsername() {
         return username;
     }
 
-    public void setEmail(String email) {
-        this.username = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
