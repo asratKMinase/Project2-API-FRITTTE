@@ -24,7 +24,7 @@ public class Food {
     private int cost;
     private int weight;
 
-    private boolean volume;
+    private int volume;
 
     private boolean frozen;
 
