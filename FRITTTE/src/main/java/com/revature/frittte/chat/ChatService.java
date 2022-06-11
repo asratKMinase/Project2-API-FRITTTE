@@ -15,25 +15,25 @@ public class ChatService {
     private ChatDao chatDao;
 
     @Autowired
-    public ChatService(ChatDao customerDao) {
+    public ChatService(ChatDao chatDao) {
         this.chatDao = chatDao;
     }
 
     public List<Chat> findAll(){
-        List<Chat> customers = (List<Chat>) chatDao.findAll();
-        return customers;
+        List<Chat> chats = (List<Chat>) chatDao.findAll();
+        return chats;
     }
     public Chat readById(String id) {
-        Chat customer = chatDao.findById(id).get();
-        return customer;
+        Chat chat = chatDao.findById(id).get();
+        return chat;
     }
 
     public Chat update(Chat updatedChat) {
         chatDao.save(updatedChat);
         return updatedChat;
     }
-    public boolean delete(String username) {
-        chatDao.deleteById(username);
+    public boolean delete(String chat_username) {
+        chatDao.deleteById(chat_username);
         return true;
     }
 
@@ -43,11 +43,9 @@ public class ChatService {
 
     public Chat create(Chat newChat){
         if(!validateInput(newChat)){
-            throw new InvalidRequestException("User input was not validated, either empty String or null values");
+            throw new InvalidRequestException("Chat input was not validated, either empty String or null values");
         }
-//        if(validateUsernameNotUsed(newChat.getUsername())){
-//            throw new InvalidRequestException("Username is already in use. Please try again with another email or login into previous made account.");
-//        }
+
         Chat persistedChat = chatDao.save(newChat);
 //TODO need to be checked in every services for persistedTrainer typo
         if(persistedChat == null){
@@ -71,7 +69,7 @@ public class ChatService {
     public Chat authenticateChat(String id, String username){
 
         if(id == null || id.trim().equals("") || username == null || username.trim().equals("")) {
-            throw new InvalidRequestException("Either email or password is an invalid entry. Please try logging in again");
+            throw new InvalidRequestException("Either id or username is an invalid entry. Please try logging in again");
         }
 
         Chat authenticatedChat = chatDao.authenticateChat(id, username);
