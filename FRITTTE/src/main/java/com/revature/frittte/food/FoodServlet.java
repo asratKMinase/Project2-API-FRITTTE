@@ -34,7 +34,7 @@ public class FoodServlet {
         return new ResponseEntity<>(foodService.findAll(), HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/deleteFoodItem")
     public void deleteCustomer(@RequestBody int id) {
         boolean deleteFood = foodService.deleteById(id);
     }

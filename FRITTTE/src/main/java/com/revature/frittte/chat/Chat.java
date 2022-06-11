@@ -24,6 +24,6 @@ public class Chat {
         @ManyToOne(optional = false)
         @JoinColumn(name = "Customer", referencedColumnName = "username")
         private Customer people;
-        private String people;
+
 
 }
