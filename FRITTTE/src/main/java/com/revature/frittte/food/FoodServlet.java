@@ -24,8 +24,8 @@ public class FoodServlet {
     }
 
     @GetMapping("/findFoodItem")
-    public ResponseEntity<Food> findFoodItem(@RequestBody String findFood){
-        Food food = foodService.readById(findFood);
+    public ResponseEntity<Food> findFoodItem(@RequestParam String id){
+        Food food = foodService.readById(id);
         return new ResponseEntity<>(food, HttpStatus.OK);
     }
 
@@ -33,12 +33,17 @@ public class FoodServlet {
     public ResponseEntity<List> findAllFoodItems(){
         return new ResponseEntity<>(foodService.findAll(), HttpStatus.OK);
     }
+    @PutMapping("/updateFoodItem")
+    public ResponseEntity<Food> updateFoodItem(@RequestBody Food food) {
+        Food updatedFoodItem= foodService.update(food);
+        return new ResponseEntity<>(updatedFoodItem, HttpStatus.OK);
+    }
 
 
 
 
     @DeleteMapping("/deleteFoodItem")
-    public void deleteCustomer(@RequestBody String id) {
+    public void deleteFoodItem(@RequestParam String id) {
 
         boolean deleteFood = foodService.deleteById(id);
     }

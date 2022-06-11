@@ -1,4 +1,4 @@
-package com.revature.frittte.util.web.dto;
+package com.revature.frittte.order;
 
 import com.revature.frittte.customer.Customer;
 import com.revature.frittte.food.Food;
