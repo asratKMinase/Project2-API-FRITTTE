@@ -28,4 +28,5 @@ public class CreditCard {
     @JoinColumn(name = "Customer", referencedColumnName = "username")
     //@Column(name = "customer_username" ,nullable = false)
     private Customer customerUsername;
+
 }

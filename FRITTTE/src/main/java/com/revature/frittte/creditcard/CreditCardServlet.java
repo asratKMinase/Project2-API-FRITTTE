@@ -25,7 +25,7 @@ public class CreditCardServlet {
         CreditCard creditCard = creditCardService.findById(findCreditCard);
         return new ResponseEntity<>(creditCard, HttpStatus.OK);
     }
-    @DeleteMapping
+    @DeleteMapping("/deleteCreditCard")
     public void DeleteCreditCard(@RequestBody String deletedCreditCard){
         creditCardService.delete(deletedCreditCard);
     }
