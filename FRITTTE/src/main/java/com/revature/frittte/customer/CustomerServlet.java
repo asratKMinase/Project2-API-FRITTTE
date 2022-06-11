@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
+@RequestMapping("/customer")
 public class CustomerServlet {
     private final CustomerService customerServices;
     @Autowired
@@ -17,6 +18,13 @@ public class CustomerServlet {
         this.customerServices = customerServices;
     }
 
+
+
+
+    @GetMapping("/welcome")
+    public @ResponseBody String test(){
+        return "Welcome to the wonderful world of Frittte";
+    }
     @GetMapping("/findAllCustomers")
     public ResponseEntity<List> findAllCustomer(){
         return new ResponseEntity<>(customerServices.findAll(), HttpStatus.FOUND);

@@ -23,8 +23,8 @@ public class AuthServlet {
     @PostMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void authorizeCustomer(@RequestBody LoginCreds loginCreds, HttpSession httpSession){
-        Customer authCustomer = customerServices.authenticateCustomer(loginCreds.getEmail(), loginCreds.getPassword());
-        httpSession.setAttribute("authTrainer", authCustomer);
+        Customer authCustomer = customerServices.authenticateCustomer(loginCreds.getUsername(), loginCreds.getPassword());
+        httpSession.setAttribute("authCustomer", authCustomer);
     }
 
     @DeleteMapping
