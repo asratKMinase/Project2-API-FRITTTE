@@ -10,6 +10,4 @@ import java.util.Optional;
 @Repository
 public interface OrderDao extends CrudRepository<OrderData, Integer> {
 
-    @Query(value = "FROM customer WHERE username= :username AND password = :password")
-    Optional<Customer> authenticateTrainer(String username, String password);
 }

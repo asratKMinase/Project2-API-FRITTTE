@@ -12,15 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin //Resource Sharing, by default it allows all "*"
 public class OrderServlet {
     private final OrderServices orderServices;
-
     @Autowired
     public OrderServlet(OrderServices trainerServices) {
         this.orderServices = trainerServices;
     }
-
-    // TODO: Implement ME
-
-    // Create
     @PostMapping("/order")
     public ResponseEntity<OrderData> saveOrder(@RequestBody OrderData order){
         OrderData newOrder = orderServices.create(order);

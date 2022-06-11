@@ -1,5 +1,8 @@
 package com.revature.frittte.food;
 
+import com.revature.frittte.exception.AuthenticationException;
+import com.revature.frittte.exception.InvalidRequestException;
+import com.revature.frittte.exception.ResourcePersistanceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,17 +13,14 @@ import java.util.List;
 @Transactional
 public class FoodService {
     private FoodDao foodDao;
-
     @Autowired
     public FoodService(FoodDao foodDao){
         this.foodDao = foodDao;
     }
-
     public List<Food> findAll(){
         List<Food> foods = (List <Food>) foodDao.findAll();
         return foods;
     }
-
     public  boolean deleteById(int id){
       foodDao.deleteById(id);
       return true;
@@ -48,9 +48,6 @@ public class FoodService {
         }
 
         // TODO: Will implement with JDBC (connecting to our database)
-        if(validateEmailNotUsed(newFoodItem.getId())){
-            throw new InvalidRequestException("newFoodItem is already in use. Please try again with another newFoodItem or login into previous made account.");
-        }
 
         Food persistedFood = foodDao.save(newFoodItem);
 
@@ -59,4 +56,35 @@ public class FoodService {
         }
         return persistedFood;
     }
+
+
+
+    public boolean validateInput(Food newFoodItem) {
+        if(newFoodItem == null) return false;
+        if(newFoodItem.getId()<0) return false;
+        if(newFoodItem.getItemName()== null || newFoodItem.getItemName().trim().equals("")) return false;
+        if(newFoodItem.getCost()<0) return false;
+        if(newFoodItem.getWeight()<0) return false;
+        if((newFoodItem.isVolume() != true)|| (newFoodItem.isVolume() != false )) return false;
+        return((newFoodItem.isFrozen() != true)|| (newFoodItem.isFrozen() != false )) ;
+        }
+
+    public Food authenticateFood(int id, String item_name){
+
+        if(id <0  || item_name == null || item_name.trim().equals("")) {
+            throw new InvalidRequestException("Either id or item_name is an invalid entry. Please try logging in again");
+        }
+
+        Food authenticatedFood = foodDao.authenticateFood(id, item_name);
+
+        if (authenticatedFood == null){
+            throw new AuthenticationException("Unauthenticated user, information provided was not consistent with our database.");
+        }
+
+        return authenticatedFood;
+
+    }
+
+
+
 }
