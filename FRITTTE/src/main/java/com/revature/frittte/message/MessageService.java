@@ -58,10 +58,10 @@ public class MessageService {
 
     public boolean validateInput(Message newMessage) {
         if(newMessage == null) return false;
-        if(newMessage.getId()>0) return false;
+        if(newMessage.getId()<0) return false;
         if(newMessage.getSender()== null || newMessage.getSender().equals("")) return false;
         if(newMessage.getText()== null || newMessage.getText().trim().equals("")) return false;
-        return(newMessage.getCreated_date()== null || newMessage.getCreated_date().trim().equals("")) ;
+        return(newMessage.getCreated_date()!= null || !newMessage.getCreated_date().trim().equals("")) ;
 
     }
 

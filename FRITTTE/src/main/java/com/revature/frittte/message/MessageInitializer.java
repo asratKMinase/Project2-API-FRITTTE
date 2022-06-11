@@ -10,9 +10,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class MessageInitializer {
 
-    private String id;
-    private String chatUsername;
-    private String title;
-    private String date;
+    private int id;
+    private String text;
+    private String created_date;
+
 
 }

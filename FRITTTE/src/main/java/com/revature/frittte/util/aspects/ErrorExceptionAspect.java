@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.io.IOException;
 
-// Becuase this aspect was so common we leverage something knows as a @RestControllerAdvice
+// Because this aspect was so common we leverage something knows as a @RestControllerAdvice
 @RestControllerAdvice
 public class ErrorExceptionAspect {
     @ExceptionHandler({InvalidRequestException.class, IOException.class})
