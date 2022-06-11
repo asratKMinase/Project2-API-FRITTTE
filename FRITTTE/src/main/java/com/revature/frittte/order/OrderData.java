@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -25,5 +26,4 @@ public class OrderData {
     private Customer customer_username;
     @Column(name = "comment_t")
     private String comment;
-
 }

@@ -27,5 +27,4 @@ public class Customer {
     private String dob;
     private boolean employee;
     private boolean admin;
-
 }
