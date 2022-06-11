@@ -8,22 +8,17 @@ server:
 # in a properties file, it would look like spring.application.name
 spring:
   application:
-    name: aroma-project
-
-
   datasource:
 
       driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
       url: jdbc:sqlserver://;serverName=akm-revprojectbd.database.windows.net;databaseName=AmAyDB;encrypt=true
       username: amrevpro
       password: Bokrrevature22
-
-
   jpa:
-    database-platform: org.hibernate.dialect.SQLServerDialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
 
 # Default actuator gives us the health endpoint, we will add a few others
 management:

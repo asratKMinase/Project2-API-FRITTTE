@@ -64,7 +64,6 @@ public class CustomerService {
         if(newCustomer.getFname() == null || newCustomer.getFname().trim().equals("")) return false;
         if(newCustomer.getLname() == null || newCustomer.getLname().trim().equals("")) return false;
          return newCustomer.getDob() != null || !newCustomer.getDob().trim().equals("");
-
     }
 
     public Customer authenticateCustomer(String username, String password){

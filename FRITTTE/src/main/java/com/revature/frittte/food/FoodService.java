@@ -25,7 +25,6 @@ public class FoodService {
         return foods;
     }
 
-
     public  boolean deleteById(String id){
       foodDao.deleteById(id);
       return true;
@@ -33,6 +32,7 @@ public class FoodService {
 
 
     }
+
     public Food readById(String id){
         Food food = foodDao.findById(id).get();
         return food;
