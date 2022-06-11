@@ -17,9 +17,11 @@ import javax.persistence.Table;
 public class Food {
 
     private int id;
+
     @Id
     @Column(name = "item_name", length = 50, nullable = false)
     private String itemName;
+
     @Column(name = "cost_t")
     private int cost;
     private int weight;

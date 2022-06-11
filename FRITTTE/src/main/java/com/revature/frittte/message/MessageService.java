@@ -1,10 +1,14 @@
 package com.revature.frittte.message;
 
+import com.revature.frittte.chat.Chat;
 import com.revature.frittte.exception.AuthenticationException;
 import com.revature.frittte.exception.InvalidRequestException;
 import com.revature.frittte.exception.ResourcePersistanceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -56,11 +60,11 @@ public class MessageService {
         if(newMessage == null) return false;
         if(newMessage.getId()>0) return false;
         if(newMessage.getSender()== null || newMessage.getSender().equals("")) return false;
-        if(newMessage.getSender()== null || newMessage.getSender().equals("")) return false;
         if(newMessage.getText()== null || newMessage.getText().trim().equals("")) return false;
         return(newMessage.getCreated_date()== null || newMessage.getCreated_date().trim().equals("")) ;
 
     }
+
     public Message authenticateMessage(int id, String sender){
 
         if(id < 0 || sender == null || sender.trim().equals("")) {
