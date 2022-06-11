@@ -13,15 +13,17 @@ import javax.persistence.*;
 @Entity
 @Table(name = "chat")
 public class Chat {
-        @Id
+
         private String id;
-        @ManyToOne(optional = false)
-        @JoinColumn(name = "Customer", referencedColumnName = "username")
-        //@Column(name = "chat_username", length = 25, nullable = false)
-        private Customer chat_username;
+        @Id
+        private String chatUsername;
         @Column(name = "title", length = 25, nullable = false)
         private String title;
         @Column(name = "date_t")
         private String date;
+        @ManyToOne(optional = false)
+        @JoinColumn(name = "Customer", referencedColumnName = "username")
+        private Customer people;
         private String people;
+
 }

@@ -15,10 +15,11 @@ import javax.persistence.Table;
 @Entity
 @Table (name = "food")
 public class Food {
-    @Id
+
     private int id;
+    @Id
     @Column(name = "item_name", length = 50, nullable = false)
-    private String item_name;
+    private String itemName;
     @Column(name = "cost_t")
     private int cost;
     private int weight;
@@ -26,6 +27,7 @@ public class Food {
     private boolean volume;
 
     private boolean frozen;
+
 }
 
 

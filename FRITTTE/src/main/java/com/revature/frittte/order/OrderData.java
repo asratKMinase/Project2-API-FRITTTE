@@ -14,17 +14,13 @@ import javax.persistence.*;
 @Entity
 @Table (name = "order_o")
 public class OrderData {
-
     @Id
     private int id;
-
     @Column(name = "order_date")
     private String orderDate;
-
     @ManyToOne(optional = false)
     @JoinColumn(name = "Food", referencedColumnName = "item_name")
-    private Food item_name;
-
+    private Food itemName;
     @ManyToOne(optional = false)
     @JoinColumn(name = "customer", referencedColumnName = "username")
     private Customer customer_username;
