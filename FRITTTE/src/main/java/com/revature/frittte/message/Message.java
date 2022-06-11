@@ -1,6 +1,5 @@
 package com.revature.frittte.message;
 
-
 import com.revature.frittte.chat.Chat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,14 +15,13 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table
+@Table (name = "message")
 public class Message {
     @Id
     private int id;
     @ManyToOne(optional = false)
-    @JoinColumn(name = "Chat", referencedColumnName = "chat_username")
+    @JoinColumn(name = "Chat", referencedColumnName = "chatUsername")
     private Chat sender;
     private String text;
     private String created_date;
-
 }

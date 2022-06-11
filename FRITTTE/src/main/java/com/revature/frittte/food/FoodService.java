@@ -62,7 +62,7 @@ public class FoodService {
     public boolean validateInput(Food newFoodItem) {
         if(newFoodItem == null) return false;
         if(newFoodItem.getId()<0) return false;
-        if(newFoodItem.getItem_name()== null || newFoodItem.getItem_name().trim().equals("")) return false;
+        if(newFoodItem.getItemName()== null || newFoodItem.getItemName().trim().equals("")) return false;
         if(newFoodItem.getCost()<0) return false;
         if(newFoodItem.getWeight()<0) return false;
         if((newFoodItem.isVolume() != true)|| (newFoodItem.isVolume() != false )) return false;
