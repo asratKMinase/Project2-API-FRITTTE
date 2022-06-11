@@ -1,16 +1,10 @@
 package com.revature.frittte.message;
 
-
-import com.revature.frittte.chat.Chat;
 import com.revature.frittte.exception.AuthenticationException;
 import com.revature.frittte.exception.InvalidRequestException;
 import com.revature.frittte.exception.ResourcePersistanceException;
-import com.revature.frittte.food.Food;
-import com.revature.frittte.food.FoodDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.persistence.Column;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -35,7 +29,11 @@ public class MessageService {
     public Message readById(int id){
         Message message = messageDao.findById(id).get();
         return message;
+    }
 
+    public Message update(Message updatedMessage) {
+        messageDao.save(updatedMessage);
+        return updatedMessage;
     }
     public boolean validateIdNotUsed(int id){
         return messageDao.existsById(id);
@@ -47,10 +45,13 @@ public class MessageService {
         Message persistedMessage = messageDao.save(newMessage);
 
         if(persistedMessage == null){
+
             throw new ResourcePersistanceException("Message was not persisted to the database upon registration");
+
         }
         return persistedMessage;
     }
+
     public boolean validateInput(Message newMessage) {
         if(newMessage == null) return false;
         if(newMessage.getId()>0) return false;
