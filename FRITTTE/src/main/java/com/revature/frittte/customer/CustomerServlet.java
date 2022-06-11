@@ -1,5 +1,6 @@
 package com.revature.frittte.customer;
 
+import com.revature.frittte.food.Food;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,9 +17,14 @@ public class CustomerServlet {
         this.customerServices = customerServices;
     }
 
-    @GetMapping("/findCustomer")
+    @GetMapping("/findAllCustomers")
     public ResponseEntity<List> findAllCustomer(){
         return new ResponseEntity<>(customerServices.findAll(), HttpStatus.FOUND);
+    }
+    @GetMapping("/findCustomer")
+    public ResponseEntity<Customer> findCustomer(@RequestParam String id){
+        Customer customer = customerServices.readById(id);
+        return new ResponseEntity<>(customer, HttpStatus.OK);
     }
     @PostMapping("/register")
     public ResponseEntity<Customer> saveCustomer(@RequestBody Customer customer) {
@@ -31,7 +37,7 @@ public class CustomerServlet {
         return new ResponseEntity<>(newCustomer, HttpStatus.OK);
     }
     @DeleteMapping("/delete")
-    public void deleteCustomer(@RequestBody String username) {
+    public void deleteCustomer(@RequestParam String username) {
         boolean newCustomer = customerServices.delete(username);
     }
 }

@@ -10,11 +10,18 @@ spring:
   application:
     name: aroma-project
 
+#  datasource:
+#    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+#    url: jdbc:sqlserver://;serverName=ay-sebirka-server.database.windows.net;databaseName=ASebirka;encrypt=true
+#    #below is the admin name
+#    username: Sebirka
+#    password: Ay2043#A
   datasource:
-    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    url: jdbc:sqlserver://;serverName=akm-revprojectbd.database.windows.net;databaseName=AmAyDB;encrypt=true
-    username: amrevpro
-    password: Bokr@#2022mina22A
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      url: jdbc:sqlserver://;serverName=akm-revprojectbd.database.windows.net;databaseName=AmAyDB;encrypt=true
+      username: amrevpro
+      password: Bokrrevature22
+
   jpa:
     database-platform: org.hibernate.dialect.SQLServerDialect
     show-sql: true

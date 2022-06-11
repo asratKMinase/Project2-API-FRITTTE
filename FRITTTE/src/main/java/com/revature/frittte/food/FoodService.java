@@ -1,5 +1,6 @@
 package com.revature.frittte.food;
 
+import com.revature.frittte.customer.Customer;
 import com.revature.frittte.exception.AuthenticationException;
 import com.revature.frittte.exception.InvalidRequestException;
 import com.revature.frittte.exception.ResourcePersistanceException;
@@ -17,27 +18,32 @@ public class FoodService {
     public FoodService(FoodDao foodDao){
         this.foodDao = foodDao;
     }
+
+
     public List<Food> findAll(){
         List<Food> foods = (List <Food>) foodDao.findAll();
         return foods;
     }
-    public  boolean deleteById(int id){
+
+
+    public  boolean deleteById(String id){
       foodDao.deleteById(id);
       return true;
 
 
 
     }
-    public Food readById(int id){
+    public Food readById(String id){
         Food food = foodDao.findById(id).get();
         return food;
 
     }
+    public Food update(Food updatedFood) {
+        foodDao.save(updatedFood);
+        return updatedFood;
+    }
 
-
-
-
-    public boolean validateUsernameNotUsed(int id){
+    public boolean validateUsernameNotUsed(String id){
         return foodDao.existsById(id);
     }
 
@@ -61,17 +67,17 @@ public class FoodService {
 
     public boolean validateInput(Food newFoodItem) {
         if(newFoodItem == null) return false;
-        if(newFoodItem.getId()<0) return false;
+        if(newFoodItem.getId()== null || newFoodItem.getId().trim().equals("")) return false;
         if(newFoodItem.getItemName()== null || newFoodItem.getItemName().trim().equals("")) return false;
         if(newFoodItem.getCost()<0) return false;
         if(newFoodItem.getWeight()<0) return false;
-        if((newFoodItem.isVolume() != true)|| (newFoodItem.isVolume() != false )) return false;
+        if((newFoodItem.getVolume() <0 )) return false;
         return((newFoodItem.isFrozen() != true)|| (newFoodItem.isFrozen() != false )) ;
         }
 
-    public Food authenticateFood(int id, String item_name){
+    public Food authenticateFood(String id, String item_name){
 
-        if(id <0  || item_name == null || item_name.trim().equals("")) {
+        if( id == null || id.trim().equals("")|| item_name == null || item_name.trim().equals("")) {
             throw new InvalidRequestException("Either id or item_name is an invalid entry. Please try logging in again");
         }
 
