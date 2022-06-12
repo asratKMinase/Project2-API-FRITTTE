@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -13,17 +14,17 @@ import javax.persistence.*;
 @Entity
 @Table(name = "chat")
 public class Chat {
-
-        private String id;
         @Id
-        private String chatUsername;
+        private String id;
+
+        @ManyToOne(optional = false)
+        @JoinColumn(name = "Customer", referencedColumnName = "username")
+        private Customer chatAdmin;
         @Column(name = "title", length = 25, nullable = false)
         private String title;
         @Column(name = "date_t")
         private String date;
-        @ManyToOne(optional = false)
-        @JoinColumn(name = "Customer", referencedColumnName = "username")
-        private Customer people;
+        private String people;
 
 
 }
