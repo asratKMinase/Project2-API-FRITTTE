@@ -14,7 +14,10 @@ import javax.persistence.*;
 @Entity
 @Table (name = "order_o")
 public class OrderData {
+
     @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private int id;
 
     @Column(name = "order_date")

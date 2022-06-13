@@ -84,6 +84,7 @@ public class FoodService {
 
         Food authenticatedFood = foodDao.authenticateFood(id, item_name);
 
+
         if (authenticatedFood == null){
             throw new AuthenticationException("Unauthenticated user, information provided was not consistent with our database.");
         }
