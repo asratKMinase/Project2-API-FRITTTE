@@ -9,11 +9,10 @@ server:
 spring:
   application:
   datasource:
-
-      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-      url: jdbc:sqlserver://;serverName=akm-revprojectbd.database.windows.net;databaseName=AmAyDB;encrypt=true
-      username: amrevpro
-      password: Bokrrevature22
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://;serverName=akm-revprojectbd.database.windows.net;databaseName=AmAyDB;encrypt=true
+    username: amrevpro
+    password: Bokrrevature22
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true

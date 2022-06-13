@@ -71,7 +71,8 @@ public class FoodService {
         if(newFoodItem.getItemName()== null || newFoodItem.getItemName().trim().equals("")) return false;
         if(newFoodItem.getCost()<0) return false;
         if(newFoodItem.getWeight()<0) return false;
-        if((newFoodItem.getVolume() <0 )) return false;
+        if((newFoodItem.getVolume() < 0)) return false;
+
         return((newFoodItem.isFrozen() != true)|| (newFoodItem.isFrozen() != false )) ;
         }
 
