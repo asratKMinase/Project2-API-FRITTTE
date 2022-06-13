@@ -5,10 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 @Data
 @NoArgsConstructor
@@ -20,6 +16,6 @@ public class CCInitializer {
     private int cvv;
     private String expDate;
     private int limit;
-    private Customer customerUsername;
+    private String customerUsername;
 
 }
