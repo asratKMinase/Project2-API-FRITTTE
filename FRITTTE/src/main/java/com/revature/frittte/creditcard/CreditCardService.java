@@ -48,7 +48,6 @@ public class CreditCardService {
         if(newCreditCard == null ) return false;
         if(newCreditCard.getCreditCardName() == null || newCreditCard.getCreditCardName().trim().equals("")) return false;
         if(newCreditCard.getCreditCardNumber() == 0 ) return false;
-        System.out.println("here is the problem");
         if(newCreditCard.getCreditCardNumber() <= 0) return false;
         if(newCreditCard.getCvv() == 0 ) return false;
         if(newCreditCard.getCvv() <= 0) return false;
