@@ -1,5 +1,6 @@
 package com.revature.frittte.message;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
