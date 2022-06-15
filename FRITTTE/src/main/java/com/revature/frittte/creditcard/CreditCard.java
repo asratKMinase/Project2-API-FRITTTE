@@ -23,10 +23,9 @@ public class CreditCard {
     @Column(name = "exp_date" ,nullable = false)
     private String expDate;
     @Column(name = "limit_l" ,nullable = false)
-    private double limit;
+    private int limit;
     @ManyToOne(optional = false)
     @JoinColumn(name = "Customer", referencedColumnName = "username")
-    //@Column(name = "customer_username" ,nullable = false)
     private Customer customerUsername;
 
 }

@@ -15,7 +15,7 @@ public class CCInitializer {
     private String creditCardName;
     private int cvv;
     private String expDate;
-    private double limit;
+    private int limit;
     private String customerUsername;
 
 }
