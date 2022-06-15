@@ -17,7 +17,7 @@ import javax.persistence.ManyToOne;
 public class OrderInitializer {
 
 
-    private int id;
+//    private int id;
     private String orderDate;
     private String itemName;
     private String comment;

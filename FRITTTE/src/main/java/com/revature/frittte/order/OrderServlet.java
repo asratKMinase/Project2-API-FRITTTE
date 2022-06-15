@@ -7,15 +7,14 @@ import com.revature.frittte.food.Food;
 import com.revature.frittte.food.FoodService;
 //import com.revature.frittte.util.web.dto.CCInitializer;
 //import com.revature.frittte.util.web.dto.OrderInitializer;
+import com.revature.frittte.util.web.dto.Username;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @RestController
 @CrossOrigin //Resource Sharing, by default it allows all "*"
@@ -41,7 +40,7 @@ public class OrderServlet {
 
         //CCInitializer initCC = mapper.readValue(req.getInputStream(), CCInitializer.class); // from JSON to Java Object (Pokemon)
         Food itemName = foodServices.readById(initOrder.getItemName());
-        newOrder.setId(initOrder.getId());
+//        newOrder.setId(initOrder.getId());
         newOrder.setOrderDate(initOrder.getOrderDate());
         newOrder.setItemName(itemName);
         newOrder.setComment(initOrder.getComment());
@@ -53,6 +52,12 @@ public class OrderServlet {
 
         return new ResponseEntity<>(persistedOrder, HttpStatus.CREATED);
 
+    }
+
+    @CrossOrigin(value = "http://localhost:3000", allowCredentials = "true")
+    @GetMapping("/findAllMyOrders/{username}")
+    public ResponseEntity<List> findAllMyOrders(@PathVariable String username) {
+        return new ResponseEntity<>(orderServices.findAllMyOrders(username), HttpStatus.OK);
     }
 
 }

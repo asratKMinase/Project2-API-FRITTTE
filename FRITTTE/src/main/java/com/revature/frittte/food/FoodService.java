@@ -22,6 +22,7 @@ public class FoodService {
 
     public List<Food> findAll(){
         List<Food> foods = (List <Food>) foodDao.findAll();
+
         return foods;
     }
 
@@ -40,6 +41,8 @@ public class FoodService {
     }
     public Food update(Food updatedFood) {
         foodDao.save(updatedFood);
+
+
         return updatedFood;
     }
 
