@@ -16,7 +16,7 @@ import javax.persistence.*;
 public class CreditCard {
     @Id
     @Column(name = "cc_number", nullable = false)
-    private long creditCardNumber;
+    private String creditCardNumber;
     @Column(name = "cc_name" ,nullable = false)
     private String creditCardName;
     private int cvv;
@@ -26,7 +26,6 @@ public class CreditCard {
     private int limit;
     @ManyToOne(optional = false)
     @JoinColumn(name = "Customer", referencedColumnName = "username")
-    //@Column(name = "customer_username" ,nullable = false)
     private Customer customerUsername;
 
 }
