@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CCInitializer {
 
-    private long creditCardNumber;
+    private String creditCardNumber;
     private String creditCardName;
     private int cvv;
     private String expDate;

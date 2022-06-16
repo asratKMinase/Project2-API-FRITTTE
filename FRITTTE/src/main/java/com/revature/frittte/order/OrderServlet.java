@@ -1,19 +1,15 @@
 package com.revature.frittte.order;
 
-import com.revature.frittte.creditcard.CreditCard;
+
 import com.revature.frittte.customer.Customer;
 import com.revature.frittte.customer.CustomerService;
 import com.revature.frittte.food.Food;
 import com.revature.frittte.food.FoodService;
-//import com.revature.frittte.util.web.dto.CCInitializer;
-//import com.revature.frittte.util.web.dto.OrderInitializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 
 import javax.servlet.http.HttpSession;
 
@@ -53,6 +49,12 @@ public class OrderServlet {
 
         return new ResponseEntity<>(persistedOrder, HttpStatus.CREATED);
 
+    }
+    @CrossOrigin(value = "http://localhost:3000", allowCredentials = "true")
+    @PutMapping("/updateOrder")
+    public ResponseEntity<OrderData> updateCustomer(@RequestBody OrderData order) {
+        OrderData newOrderData= orderServices.update(order);
+        return new ResponseEntity<>(newOrderData, HttpStatus.OK);
     }
 
 }
