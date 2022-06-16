@@ -4,8 +4,6 @@ package com.revature.frittte.order;
 import com.revature.frittte.customer.Customer;
 import com.revature.frittte.food.Food;
 import com.revature.frittte.food.FoodService;
-//import com.revature.frittte.util.web.dto.CCInitializer;
-//import com.revature.frittte.util.web.dto.OrderInitializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

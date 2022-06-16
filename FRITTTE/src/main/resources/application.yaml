@@ -8,11 +8,12 @@ server:
 # in a properties file, it would look like spring.application.name
 spring:
   application:
+    name:FrittteProject
   datasource:
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    url: jdbc:sqlserver://;serverName=akm-revprojectbd.database.windows.net;databaseName=AmAyDB;encrypt=true
-    username: amrevpro
-    password: Bokrrevature22
+    url: ${BDURL}
+    username: ${DBUSER}
+    password: ${DBPASS}
   jpa:
     database-platform: org.hibernate.dialect.SQLServerDialect
     show-sql: true
